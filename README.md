@@ -17,7 +17,8 @@ Zentao API client enabling Go programs to interact with Zentao in a simple and u
 ### 使用
 
 ```go
-import "github.com/easysoft/go-zentao/v21/zentao"
+import "github.com/xinnss/go-zentao/v21zentao
+"
 ```
 
 ### 支持Restful

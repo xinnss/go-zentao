@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/easysoft/go-zentao/v21/zentao"
+	"github.com/xinnss/go-zentao/v21/zentao"
 
 	"github.com/davecgh/go-spew/spew"
 )

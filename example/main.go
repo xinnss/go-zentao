@@ -19,8 +19,8 @@ package main
 import (
 	"log"
 
-	buildinClient "github.com/easysoft/go-zentao/v21/buildin"
-	"github.com/easysoft/go-zentao/v21/zentao"
+	buildinClient "github.com/xinnss/go-zentao/v21/buildin"
+	"github.com/xinnss/go-zentao/v21/zentao"
 
 	"github.com/davecgh/go-spew/spew"
 )

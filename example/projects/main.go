@@ -21,7 +21,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/easysoft/go-zentao/v21/zentao"
+	"github.com/xinnss/go-zentao/v21/zentao"
 )
 
 func main() {

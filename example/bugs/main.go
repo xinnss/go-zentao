@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/easysoft/go-zentao/v21/zentao"
+	zentao "github.com/xinnss/go-zentao/v21/zentao"
 )
 
 func main() {
