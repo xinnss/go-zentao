@@ -46,7 +46,7 @@ func main() {
 			AssignedTo: "productManager",
 			Mailto:     []string{"admin", "yangwenkai"},
 		},
-		Openedbuild: []string{"trunk"}, // 主干
+		Openedbuild: []string{"trunk", "v1"}, // 主干
 	})
 	if err != nil {
 		panic(err)
