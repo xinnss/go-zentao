@@ -50,6 +50,7 @@ type BugMeta struct {
 	Type       BugType `json:"type"`
 	AssignedTo any     `json:"assignedTo"`
 	FeedbackBy any     `json:"feedbackBy,omitempty"` // 仅bug接口
+	Keywords   string  `json:"keywords,omitempty"`
 }
 
 type BugBody struct {
