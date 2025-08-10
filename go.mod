@@ -1,4 +1,4 @@
-module github.com/easysoft/go-zentao/v21
+module github.com/xinnss/go-zentao/v21
 
 go 1.24.0
 
