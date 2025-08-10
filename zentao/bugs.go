@@ -49,7 +49,6 @@ type BugMeta struct {
 	Steps      string  `json:"steps"`
 	Type       BugType `json:"type"`
 	AssignedTo any     `json:"assignedTo"`
-	FeedbackBy any     `json:"feedbackBy,omitempty"` // 仅bug接口
 	Keywords   string  `json:"keywords,omitempty"`
 	Mailto     any     `json:"mailto,omitempty"`
 }
