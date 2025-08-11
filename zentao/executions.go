@@ -139,7 +139,7 @@ func (s *ExecutionsService) ListByProject(id int64) (*ProjectExecutions, *req.Re
 	var pe ProjectExecutions
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&pe).
+		SetResult(&pe).
 		Get(s.client.RequestURL(fmt.Sprintf("/projects/%d/executions", id)))
 	return &pe, resp, err
 }
@@ -151,7 +151,7 @@ func (s *ExecutionsService) Create(id int, build ExecutionsCreateMeta) (*Executi
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&build).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/projects/%d/executions", id)))
 	return &u, resp, err
 }
@@ -161,7 +161,7 @@ func (s *ExecutionsService) DeleteByID(id int) (*CustomResp, *req.Response, erro
 	var u CustomResp
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Delete(s.client.RequestURL(fmt.Sprintf("/executions/%d", id)))
 	return &u, resp, err
 }
@@ -172,7 +172,7 @@ func (s *ExecutionsService) UpdateByID(id int, exec ExecutionsUpdateMeta) (*Exec
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&exec).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Put(s.client.RequestURL(fmt.Sprintf("/executions/%d", id)))
 	return &u, resp, err
 }
@@ -182,7 +182,7 @@ func (s *ExecutionsService) GetByID(id int) (*ExecutionsCreateMsg, *req.Response
 	var u ExecutionsCreateMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/executions/%d", id)))
 	return &u, resp, err
 }

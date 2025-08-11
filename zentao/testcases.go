@@ -245,7 +245,7 @@ func (s *TestCasesService) ListByProducts(id int, parms ...any) (*ListProductsTe
 		req = req.SetQueryParams(parms[0].(map[string]string))
 	}
 	resp, err := req.
-		SetSuccessResult(&et).
+		SetResult(&et).
 		Get(s.client.RequestURL(fmt.Sprintf("/products/%d/testcases", id)))
 	return &et, resp, err
 }
@@ -256,7 +256,7 @@ func (s *TestCasesService) Create(id int, build TestCasesCreateMeta) (*TestCases
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&build).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/products/%d/testcases", id)))
 	return &u, resp, err
 }
@@ -266,7 +266,7 @@ func (s *TestCasesService) DeleteByID(id int) (*CustomResp, *req.Response, error
 	var u CustomResp
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Delete(s.client.RequestURL(fmt.Sprintf("/testcases/%d", id)))
 	return &u, resp, err
 }
@@ -277,7 +277,7 @@ func (s *TestCasesService) UpdateByID(id int, tc TestCasesCreateMeta) (*TestCase
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&tc).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Put(s.client.RequestURL(fmt.Sprintf("/testcases/%d", id)))
 	return &u, resp, err
 }
@@ -287,7 +287,7 @@ func (s *TestCasesService) GetByID(id int) (*TestCasesCreateMsg, *req.Response, 
 	var u TestCasesCreateMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/testcases/%d", id)))
 	return &u, resp, err
 }
@@ -302,7 +302,7 @@ func (s *TestCasesService) GetResultByID(id any) (*TestCasesResultResp, *req.Res
 	}
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/testcases/%v/results", id)))
 	return &u, resp, err
 }

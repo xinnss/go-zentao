@@ -139,7 +139,7 @@ func (s *ProjectsService) List(limit, page string) (*ProjectsListMsg, *req.Respo
 			"page":  page,
 			"limit": limit,
 		}).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL("/projects"))
 	return &u, resp, err
 }
@@ -150,7 +150,7 @@ func (s *ProjectsService) Create(program ProjectsCreateMeta) (*ProjectsBody, *re
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&program).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL("/projects"))
 	return &u, resp, err
 }
@@ -160,7 +160,7 @@ func (s *ProjectsService) DeleteByID(id int) (*CustomResp, *req.Response, error)
 	var u CustomResp
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Delete(s.client.RequestURL(fmt.Sprintf("/projects/%d", id)))
 	return &u, resp, err
 }
@@ -171,7 +171,7 @@ func (s *ProjectsService) UpdateByID(id int, pum ProjectsUpdateMeta) (*ProjectsB
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&pum).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Put(s.client.RequestURL(fmt.Sprintf("/projects/%d", id)))
 	return &u, resp, err
 }
@@ -181,7 +181,7 @@ func (s *ProjectsService) GetByID(id int) (*ProjectsBody, *req.Response, error) 
 	var u ProjectsBody
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/projects/%d", id)))
 	return &u, resp, err
 }

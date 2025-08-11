@@ -140,7 +140,7 @@ func (s *StoriesService) ProjectsList(id int) (*StoriesListMeta, *req.Response, 
 	var u StoriesListMeta
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/projects/%d/stories", id)))
 	return &u, resp, err
 }
@@ -150,7 +150,7 @@ func (s *StoriesService) ProductsList(id int) (*StoriesListMeta, *req.Response, 
 	var u StoriesListMeta
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/products/%d/stories", id)))
 	return &u, resp, err
 }
@@ -161,7 +161,7 @@ func (s *StoriesService) Create(story StoriesCreateMeta) (*StoriesMsg, *req.Resp
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&story).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL("/stories"))
 	return &u, resp, err
 }
@@ -171,7 +171,7 @@ func (s *StoriesService) DeleteByID(id int) (*CustomResp, *req.Response, error) 
 	var u CustomResp
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Delete(s.client.RequestURL(fmt.Sprintf("/stories/%d", id)))
 	return &u, resp, err
 }
@@ -181,7 +181,7 @@ func (s *StoriesService) GetByID(id int) (*StoriesMsg, *req.Response, error) {
 	var u StoriesMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/stories/%d", id)))
 	return &u, resp, err
 }
@@ -191,7 +191,7 @@ func (s *StoriesService) ExecutionsList(id int) (*StoriesListMeta, *req.Response
 	var u StoriesListMeta
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/executions/%d/stories", id)))
 	return &u, resp, err
 }
@@ -202,7 +202,7 @@ func (s *StoriesService) UpdateFieldByID(id int, uf StoriesUpdateFieldMeta) (*St
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&uf).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Put(s.client.RequestURL(fmt.Sprintf("/stories/%d", id)))
 	return &u, resp, err
 }
@@ -213,7 +213,7 @@ func (s *StoriesService) UpdateByID(id int, story StoriesMeta) (*StoriesMsg, *re
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&story).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/stories/%d/change", id)))
 	return &u, resp, err
 }
@@ -224,7 +224,7 @@ func (s *StoriesService) CloseByID(id int, story StoriesClose) (*StoriesMsg, *re
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&story).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/stories/%d/close", id)))
 	return &u, resp, err
 }
@@ -235,7 +235,7 @@ func (s *StoriesService) ActiveByID(id int, story StoriesActive) (*StoriesMsg, *
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&story).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/stories/%d/active", id)))
 	return &u, resp, err
 }
@@ -246,7 +246,7 @@ func (s *StoriesService) AssignByID(id int, story StoriesActive) (*StoriesMsg, *
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&story).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/stories/%d/assign", id)))
 	return &u, resp, err
 }
@@ -256,7 +256,7 @@ func (s *StoriesService) GetEstimateByID(id int) (*StoriesMsg, *req.Response, er
 	var u StoriesMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/stories/%d/estimate", id)))
 	return &u, resp, err
 }
@@ -267,7 +267,7 @@ func (s *StoriesService) UpdateEstimateByID(id int, story StoriesEstimate) (*Sto
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&story).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/stories/%d/estimate", id)))
 	return &u, resp, err
 }
@@ -278,7 +278,7 @@ func (s *StoriesService) ChildByID(id int, story StoriesMeta) (*StoriesMsg, *req
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&story).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/stories/%d/child", id)))
 	return &u, resp, err
 }
@@ -288,7 +288,7 @@ func (s *StoriesService) RecallByID(id int) (*StoriesMsg, *req.Response, error) 
 	var u StoriesMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Delete(s.client.RequestURL(fmt.Sprintf("/stories/%d/recall", id)))
 	return &u, resp, err
 }
@@ -303,7 +303,7 @@ func (s *StoriesService) ReviewByID(id int, story StoriesReview) (*StoriesMsg, *
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&story).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/stories/%d/review", id)))
 	return &u, resp, err
 }

@@ -35,7 +35,7 @@ func (s *MiscService) GetConfigurations() (*Configurations, *req.Response, error
 	var result Configurations
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&result).
+		SetResult(&result).
 		Get(s.client.RequestURL("/configurations"))
 	return &result, resp, err
 }
@@ -44,7 +44,7 @@ func (s *MiscService) GetVersion() (*Configuration, *req.Response, error) {
 	var result Configuration
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&result).
+		SetResult(&result).
 		Get(s.client.RequestURL("/configurations/version"))
 	return &result, resp, err
 }

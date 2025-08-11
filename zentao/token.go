@@ -38,7 +38,7 @@ func (s *TokenService) GetAccessToken() (*AccessToken, *req.Response, error) {
 	var result AccessToken
 	resp, err := s.client.client.R().
 		SetBody(&BasicAuth{Account: s.client.username, Password: s.client.password}).
-		SetSuccessResult(&result).
+		SetResult(&result).
 		Post(s.client.RequestURL("/tokens"))
 
 	return &result, resp, err
@@ -48,7 +48,7 @@ func (s *TokenService) Ping() (*AccessToken, *req.Response, error) {
 	var result AccessToken
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&result).
+		SetResult(&result).
 		Get(s.client.RequestURL("/ping"))
 	return &result, resp, err
 }

@@ -162,11 +162,11 @@ func (s *LoginService) GetSessionID() (*string, *req.Response, error) {
 	var err error
 	if s.client.zentaomode == ZentaoGetMode {
 		resp, err = s.client.client.R().
-			SetSuccessResult(&data).
+			SetResult(&data).
 			Get(s.client.RequestURL("/index.php?m=api&f=getSessionID&t=json"))
 	} else {
 		resp, err = s.client.client.R().
-			SetSuccessResult(&data).
+			SetResult(&data).
 			Get(s.client.RequestURL("/api-getsessionid.json"))
 	}
 	if err != nil {
@@ -190,11 +190,11 @@ func (s *LoginService) Login() (bool, *LoginRespData, *req.Response, error) {
 	var err error
 	if s.client.zentaomode == ZentaoGetMode {
 		resp, err = s.client.client.R().
-			SetSuccessResult(&data).
+			SetResult(&data).
 			Get(s.client.RequestURLFmt("/index.php?m=user&f=login&t=json&account=%s&password=%s&zentaosid=%s", s.client.username, s.client.password, s.client.zentaosid))
 	} else {
 		resp, err = s.client.client.R().
-			SetSuccessResult(&data).
+			SetResult(&data).
 			Get(s.client.RequestURLFmt("/user-login.json?account=%s&password=%s&zentaosid=%s", s.client.username, s.client.password, s.client.zentaosid))
 	}
 	if err != nil {

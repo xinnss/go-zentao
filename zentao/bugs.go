@@ -200,7 +200,7 @@ func (s *BugsService) ListByProducts(id int64, op ListOptions) (*ListProductsBug
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetQueryString(op.toURLValues()).
-		SetSuccessResult(&et).
+		SetResult(&et).
 		Get(s.client.RequestURL(fmt.Sprintf("/products/%d/bugs", id)))
 	return &et, resp, err
 }
@@ -210,7 +210,7 @@ func (s *BugsService) ListByProjects(id int64, op ListOptions) (*ListProductsBug
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetQueryString(op.toURLValues()).
-		SetSuccessResult(&et).
+		SetResult(&et).
 		Get(s.client.RequestURL(fmt.Sprintf("/projects/%d/bugs", id)))
 	return &et, resp, err
 }
@@ -220,7 +220,7 @@ func (s *BugsService) ListByExecutions(id int64, op ListOptions) (*ListProductsB
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetQueryString(op.toURLValues()).
-		SetSuccessResult(&et).
+		SetResult(&et).
 		Get(s.client.RequestURL(fmt.Sprintf("/executions/%d/bugs", id)))
 	return &et, resp, err
 }
@@ -231,7 +231,7 @@ func (s *BugsService) Create(id int, build BugCreateMeta) (*BugGetMsg, *req.Resp
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&build).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/products/%d/bugs", id)))
 	return &u, resp, err
 }
@@ -241,7 +241,7 @@ func (s *BugsService) DeleteByID(id int) (*CustomResp, *req.Response, error) {
 	var u CustomResp
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Delete(s.client.RequestURL(fmt.Sprintf("/bugs/%d", id)))
 	return &u, resp, err
 }
@@ -252,7 +252,7 @@ func (s *BugsService) UpdateByID(id int, exec BugUpdateMeta) (*BugGetMsg, *req.R
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&exec).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Put(s.client.RequestURL(fmt.Sprintf("/bugs/%d", id)))
 	return &u, resp, err
 }
@@ -262,7 +262,7 @@ func (s *BugsService) GetByID(id int) (*BugGetMsg, *req.Response, error) {
 	var u BugGetMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/bugs/%d", id)))
 	return &u, resp, err
 }
@@ -273,7 +273,7 @@ func (s *BugsService) CloseByID(id int, comment CommentBug) (*BugGetMsg, *req.Re
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&comment).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/bugs/%d/close", id)))
 	return &u, resp, err
 }
@@ -284,7 +284,7 @@ func (s *BugsService) AssignByID(id int, assign AssignBug) (*BugGetMsg, *req.Res
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&assign).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/bugs/%d/assign", id)))
 	return &u, resp, err
 }
@@ -295,7 +295,7 @@ func (s *BugsService) ConfirmByID(id int, confirm ConfirmBug) (*BugGetMsg, *req.
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&confirm).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/bugs/%d/confirm", id)))
 	return &u, resp, err
 }
@@ -306,7 +306,7 @@ func (s *BugsService) ResolveByID(id int, resolve ResolveBug) (*BugGetMsg, *req.
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&resolve).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/bugs/%d/resolve", id)))
 	return &u, resp, err
 }
@@ -317,7 +317,7 @@ func (s *BugsService) ActiveByID(id int, active ActiveBug) (*BugGetMsg, *req.Res
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&active).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL(fmt.Sprintf("/bugs/%d/active", id)))
 	return &u, resp, err
 }
@@ -327,7 +327,7 @@ func (s *BugsService) EstimateByID(id int) (*BugGetMsg, *req.Response, error) {
 	var u BugGetMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/bugs/%d/estimate", id)))
 	return &u, resp, err
 }

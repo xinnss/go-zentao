@@ -71,7 +71,7 @@ func (s *ModulesService) List(op ModulesListOptions) (*ListModules, *req.Respons
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetQueryString(opValues).
-		SetSuccessResult(&et).
+		SetResult(&et).
 		Get(s.client.RequestURL("/modules"))
 	return &et, resp, err
 }

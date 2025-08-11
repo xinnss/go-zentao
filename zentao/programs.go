@@ -111,7 +111,7 @@ func (s *ProgramsService) List(order string) (*ProgramsList, *req.Response, erro
 			"page":  "1",
 			"limit": "500",
 		}).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL("/programs"))
 	return &u, resp, err
 }
@@ -122,7 +122,7 @@ func (s *ProgramsService) Create(program ProgramsMeta) (*ProgramsMsg, *req.Respo
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&program).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Post(s.client.RequestURL("/programs"))
 	return &u, resp, err
 }
@@ -132,7 +132,7 @@ func (s *ProgramsService) DeleteByID(id int) (*CustomResp, *req.Response, error)
 	var u CustomResp
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Delete(s.client.RequestURL(fmt.Sprintf("/programs/%d", id)))
 	return &u, resp, err
 }
@@ -143,7 +143,7 @@ func (s *ProgramsService) UpdateByID(id int, user ProgramsMeta) (*ProgramsMsg, *
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
 		SetBody(&user).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Put(s.client.RequestURL(fmt.Sprintf("/programs/%d", id)))
 	return &u, resp, err
 }
@@ -153,7 +153,7 @@ func (s *ProgramsService) GetByID(id int) (*ProgramsMsg, *req.Response, error) {
 	var u ProgramsMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/programs/%d", id)))
 	return &u, resp, err
 }

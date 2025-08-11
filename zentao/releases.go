@@ -100,7 +100,7 @@ func (s *ReleasesService) ProjectsList(id int) (*ProjectReleasesMsg, *req.Respon
 	var u ProjectReleasesMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/projects/%d/releases", id)))
 	return &u, resp, err
 }
@@ -110,7 +110,7 @@ func (s *ReleasesService) ProductsList(id int) (*ProductReleasesMsg, *req.Respon
 	var u ProductReleasesMsg
 	resp, err := s.client.client.R().
 		SetHeader("Token", s.client.token).
-		SetSuccessResult(&u).
+		SetResult(&u).
 		Get(s.client.RequestURL(fmt.Sprintf("/products/%d/releases", id)))
 	return &u, resp, err
 }
